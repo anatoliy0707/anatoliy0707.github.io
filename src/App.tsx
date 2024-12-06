@@ -19,7 +19,7 @@ import { fetchProducts, selectAllProducts, selectCurrentProduct, selectFavorites
 
 
 function App() {
-// test
+
     const allProducts = useAppSelector(selectAllProducts);
     const currentProduct = useAppSelector(selectCurrentProduct)
     const favoriteProducts = useAppSelector(selectFavoritesProducts);
