@@ -15,7 +15,7 @@ import {FormPage} from "./pages/form-page";
 import {useAppSelector} from "./hooks/use-app-selector";
 import {CustomPagination} from "./components/pagination";
 import {usePagination} from "./hooks/use-pagination";
-import { fetchProducts, selectAllProducts, selectCurrentProduct, selectFavoritesProducts } from './state/products-reducer';
+import { fetchProducts, selectAllProducts, selectCurrentProduct, selectFavoritesProducts, setCurrentProduct } from './state/products-reducer';
 
 
 function App() {
@@ -50,7 +50,10 @@ function App() {
             <Header style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                 {location.pathname === "/" && <Filter/>}
                 {(location.pathname !== "/404" && location.pathname !== "/") &&
-                    <Button type="primary" onClick={() => navigate("/")}>На главную</Button>}
+                    <Button type="primary" onClick={() => {
+                        navigate("/")
+                        dispatch(setCurrentProduct(null))
+                        }}>На главную</Button>}
                 {location.pathname === "/" && <Button onClick={() => navigate("/create-product")}>Создать</Button>}
             </Header>
 
